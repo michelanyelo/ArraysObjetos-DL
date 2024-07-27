@@ -67,9 +67,11 @@
     console.log(primero_radio);
     console.log(ultimo_radio);
 
-    /* 3. Imprimir la lista de consultas médicas de Dental. 
+    /* 
+    3. Imprimir la lista de consultas médicas de Dental. 
     Sin embargo, debe hacerlo separando por un guión cada dato desplegado 
-    y cada fila de información debe estar separada por un párrafo */
+    y cada fila de información debe estar separada por un párrafo 
+    */
 
     document.write("<h2>Consultas Dental: </h2>");
     dental.forEach((atencion) => {
@@ -85,6 +87,20 @@
     });
     document.write("<br>")
 
+    /*  
+    Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. 
+    Para esto, deberá unir todos los nombres de pacientes e imprimir uno por cada párrafo.
+    Ejemplo:
+    FRANCISCA ROJAS
+    PAMELA ESTRADA
+    ARMANDO LUNA…
+    */
+
+    // usando spread
+    const pacientes = [...dental, ...traumatologia, ...radiologia];
+    pacientes.forEach((atencion) => {
+        document.write(`<p>Paciente: ${atencion.paciente} <p>`);
+    });
 
 
     document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
