@@ -67,6 +67,23 @@
     console.log(primero_radio);
     console.log(ultimo_radio);
 
+    /* 3. Imprimir la lista de consultas médicas de Dental. 
+    Sin embargo, debe hacerlo separando por un guión cada dato desplegado 
+    y cada fila de información debe estar separada por un párrafo */
+
+    dental.forEach((atencion) => {
+
+        document.write(
+            `<p>
+            ${atencion.hora} -
+            ${atencion.especialista} -
+            ${atencion.paciente} -
+            ${atencion.rut} -
+            ${atencion.prevision}
+            </p>`
+        );
+    });
+
 
 
     document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
