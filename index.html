@@ -8,7 +8,7 @@
     <title>Centro Médico Ñuñoa</title>
 </head>
 <script>
-    document.write('<p>Estadisticas centro medico ñuñoa</p>');
+    document.write('<h1>Estadisticas centro medico ñuñoa</h1>');
 
     var radiologia = [
         { hora: '11:00', especialista: 'IGNACIO SCHULZ', paciente: 'FRANCISCA ROJAS', rut: '9878782-1', prevision: 'FONASA' },
@@ -71,18 +71,19 @@
     Sin embargo, debe hacerlo separando por un guión cada dato desplegado 
     y cada fila de información debe estar separada por un párrafo */
 
+    document.write("<h2>Consultas Dental: </h2>");
     dental.forEach((atencion) => {
-
         document.write(
             `<p>
-            ${atencion.hora} -
-            ${atencion.especialista} -
-            ${atencion.paciente} -
-            ${atencion.rut} -
-            ${atencion.prevision}
+            Hora: ${atencion.hora} -
+            Especialista: ${atencion.especialista} -
+            Paciente: ${atencion.paciente} -
+            Rut: ${atencion.rut} -
+            Previsión: ${atencion.prevision}
             </p>`
         );
     });
+    document.write("<br>")
 
 
 
