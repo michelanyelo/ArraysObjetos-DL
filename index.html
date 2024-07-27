@@ -129,7 +129,7 @@
     document.write("<h2>Pacientes que se atienden con Isapre en la especialidad Dental: </h2>");
 
     numPaciente = 0;
-    const fonasa_salud = dental.filter((atencion) => {
+    const isapre_salud = dental.filter((atencion) => {
         if (atencion.prevision === "ISAPRE") {
             numPaciente++;
             document.write(
@@ -138,7 +138,7 @@
                     <strong>Rut:</strong> ${atencion.rut} -
                     <strong>Previsión:</strong> ${atencion.prevision}
                 </p>`
-            )
+            );
         };
     });
 
@@ -147,6 +147,24 @@
     /*
     6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas de Traumatología
     */
+
+    document.write("<h2>Pacientes que se atienden con Fonasa en la especialidad Traumatología: </h2>");
+
+    numPaciente = 0;
+    const fonasa_trauma = traumatologia.filter((atencion) => {
+        if (atencion.prevision === "FONASA") {
+            numPaciente++;
+            document.write(
+                `<p>
+                    <strong>Paciente ${numPaciente}:</strong> ${atencion.paciente} -
+                    <strong>Rut:</strong> ${atencion.rut} -
+                    <strong>Previsión:</strong> ${atencion.prevision}
+                </p>`
+            );
+        };
+    });
+
+    document.write("<br>");
 
     document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
     document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
