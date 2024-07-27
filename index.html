@@ -109,14 +109,12 @@
     });
     */
 
-    // usando el metodo concat y enumerando al paciente
+    // usando el metodo concat y enumerando al paciente con el parametro indice (o index) que provee forEach
     document.write("<h2>Todas/os nuestras/os pacientes: </h2>");
-    let numPaciente = 0;
 
     const pacientes = radiologia.concat(traumatologia).concat(dental);
-    pacientes.forEach((atencion) => {
-        numPaciente++;
-        document.write(`<p><strong>Paciente ${numPaciente}:</strong> ${atencion.paciente} <p>`);
+    pacientes.forEach((atencion, indice) => {
+        document.write(`<p><strong>Paciente ${indice + 1}:</strong> ${atencion.paciente} <p>`);
     });
 
     /*   
@@ -126,7 +124,9 @@
     // usando el metodo filter, retorna un array
     document.write("<h2>Pacientes que se atienden con Isapre en la especialidad Dental: </h2>");
 
-    numPaciente = 0;
+    // si usaba el parametro indice como en el desarrollo anterior el resultado era 1,2,6 
+    // para evitar esa correlatividad mejor declarar una variable que autoincremente en cada iteracion
+    let numPaciente = 0;
     const isapre_salud = dental.filter((atencion) => {
         if (atencion.prevision === "ISAPRE") {
             numPaciente++;
