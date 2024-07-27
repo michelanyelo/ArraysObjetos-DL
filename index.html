@@ -40,8 +40,7 @@
 
     // 1. Agregar las siguientes horas al arreglo de Traumatología
 
-
-    /* metodo concat 
+    /* usando metodo concat para evitar modificar el original y generar uno nuevo
     const trauma_extend = traumatologia.concat(
         { hora: "09:00", especialista: "RENÉ POBLETE", paciente: "ANA GELLONA", rut: "13123329-7", prevision: "ISAPRE" },
         { hora: "09:30", especialista: "MARIA SOLAR", paciente: "RAMIRO ANDRADE", rut: "12221451-K", prevision: "FONASA" },
@@ -50,6 +49,7 @@
         { hora: "12:00", especialista: "MATIAS ARAVENA", paciente: "SUSANA POBLETE", rut: "14345656-6", prevision: "FONASA" }
     ); */
 
+    // usando metodo push para actualizar el array object de trauma
     traumatologia.push(
         { hora: "09:00", especialista: "RENÉ POBLETE", paciente: "ANA GELLONA", rut: "13123329-7", prevision: "ISAPRE" },
         { hora: "09:30", especialista: "MARIA SOLAR", paciente: "RAMIRO ANDRADE", rut: "12221451-K", prevision: "FONASA" },
@@ -61,11 +61,15 @@
     console.log(traumatologia);
 
     // 2. Eliminar el primer y último elemento del arreglo de Radiología
+
+    // usando metodo shift para eliminar primero y pop para eliminar ultimo
     const primero_radio = radiologia.shift();
     const ultimo_radio = radiologia.pop();
     console.log(radiologia);
     console.log(primero_radio);
     console.log(ultimo_radio);
+
+    document.write("<br>");
 
     /* 
     3. Imprimir la lista de consultas médicas de Dental. 
@@ -73,19 +77,20 @@
     y cada fila de información debe estar separada por un párrafo 
     */
 
+    // usando el metodo forEach para recorrer y realizar una accion
     document.write("<h2>Consultas para la especialidad Dental: </h2>");
     dental.forEach((atencion) => {
         document.write(
             `<p>
-            Hora: ${atencion.hora} -
-            Especialista: ${atencion.especialista} -
-            Paciente: ${atencion.paciente} -
-            Rut: ${atencion.rut} -
-            Previsión: ${atencion.prevision}
+            <strong>Hora:</strong> ${atencion.hora} -
+            <strong>Especialista:</strong> ${atencion.especialista} -
+            <strong>Paciente:</strong> ${atencion.paciente} -
+            <strong>Rut:</strong> ${atencion.rut} -
+            <strong>Previsión:</strong> ${atencion.prevision}
             </p>`
         );
     });
-    document.write("<br>")
+    document.write("<br>");
 
     /*  
     4. Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. 
@@ -104,15 +109,44 @@
     });
     */
 
-    // usando concat y enumerando al paciente
+    // usando el metodo concat y enumerando al paciente
     document.write("<h2>Todas/os nuestras/os pacientes: </h2>");
-    var pacientes = radiologia.concat(traumatologia).concat(dental);
-    pacientes.forEach((atencion, index) => {
-        let numPaciente = index + 1
-        document.write(`<p>Paciente ${numPaciente}: ${atencion.paciente} <p>`);
+    let numPaciente = 0;
+
+    const pacientes = radiologia.concat(traumatologia).concat(dental);
+    pacientes.forEach((atencion) => {
+        numPaciente++;
+        document.write(`<p><strong>Paciente ${numPaciente}:</strong> ${atencion.paciente} <p>`);
     });
 
-    document.write("<br>")
+    document.write("<br>");
+
+    /*   
+    5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas de Dental
+    */
+
+    // usando el metodo filter, retorna un array
+    document.write("<h2>Pacientes que se atienden con Isapre en la especialidad Dental: </h2>");
+
+    numPaciente = 0;
+    const fonasa_salud = dental.filter((atencion) => {
+        if (atencion.prevision === "ISAPRE") {
+            numPaciente++;
+            document.write(
+                `<p>
+                    <strong>Paciente ${numPaciente}:</strong> ${atencion.paciente} -
+                    <strong>Rut:</strong> ${atencion.rut} -
+                    <strong>Previsión:</strong> ${atencion.prevision}
+                </p>`
+            )
+        };
+    });
+
+    document.write("<br>");
+
+    /*
+    6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas de Traumatología
+    */
 
     document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
     document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
