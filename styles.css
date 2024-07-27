@@ -24,3 +24,7 @@ h2 {
     color: var(--green-secondary);
     margin-top: 3.5rem;
 }
+
+strong{
+    color: #3b3b3b;
+}
