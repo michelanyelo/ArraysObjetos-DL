@@ -17,8 +17,11 @@ Este proyecto es parte del módulo "Fundamentos de programación en JavaScript" 
 ## 📁 Estructura del Proyecto
 
 ```plaintext
-
-`-- index.html
+.
+|-- LICENSE
+|-- README.md
+|-- index.html
+`-- styles.css
 
 ```
 
