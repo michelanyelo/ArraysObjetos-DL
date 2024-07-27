@@ -73,7 +73,7 @@
     y cada fila de información debe estar separada por un párrafo 
     */
 
-    document.write("<h2>Consultas Dental: </h2>");
+    document.write("<h2>Consultas para la especialidad Dental: </h2>");
     dental.forEach((atencion) => {
         document.write(
             `<p>
@@ -88,7 +88,7 @@
     document.write("<br>")
 
     /*  
-    Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. 
+    4. Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. 
     Para esto, deberá unir todos los nombres de pacientes e imprimir uno por cada párrafo.
     Ejemplo:
     FRANCISCA ROJAS
@@ -97,11 +97,22 @@
     */
 
     // usando spread
-    const pacientes = [...dental, ...traumatologia, ...radiologia];
+    /*
+     var pacientes = [...radiologia, ...traumatologia, ...dental];
     pacientes.forEach((atencion) => {
         document.write(`<p>Paciente: ${atencion.paciente} <p>`);
     });
+    */
 
+    // usando concat y enumerando al paciente
+    document.write("<h2>Todas/os nuestras/os pacientes: </h2>");
+    var pacientes = radiologia.concat(traumatologia).concat(dental);
+    pacientes.forEach((atencion, index) => {
+        let numPaciente = index + 1
+        document.write(`<p>Paciente ${numPaciente}: ${atencion.paciente} <p>`);
+    });
+
+    document.write("<br>")
 
     document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
     document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
